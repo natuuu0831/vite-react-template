@@ -1,8 +1,3 @@
-# brand-frontend
-MyBrand人事画面のフロントエンド
-
-## ローカル環境構築
-- .envの作成
-```
-cp .env.example .env
-```
+viteを使ったReactアプリケーションの雛形
+- styled-components
+- recoil

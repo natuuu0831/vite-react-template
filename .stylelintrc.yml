@@ -1,0 +1,37 @@
+extends:
+  - "stylelint-config-standard" # 基本的な記述設定
+  - "stylelint-config-recess-order" # 並び替え
+  #PrettierをStylelintルールとして実行し、相違点を個々の Stylelint の問題として報告します。
+  #https://github.com/prettier/stylelint-prettier
+  - "stylelint-prettier/recommended"
+  #不要な、または Prettier と競合する可能性のあるすべてのルールをオフにします。これにより、Prettier を使用するときにスタイルの選択が邪魔になることなく、お気に入りの共有可能な構成を使用できます。
+  #https://github.com/prettier/stylelint-config-prettier
+  - "stylelint-config-prettier"
+
+overrides:
+  - {
+      files: ["**/*.{ts,tsx}"],
+      customSyntax: "@stylelint/postcss-css-in-js",
+      rules: { "function-name-case": null, "function-no-unknown": null },
+    }
+rules:
+  "prettier/prettier": true
+  #16 進数の色には小文字
+  color-hex-case: lower
+  # 検出されるが手動で修正必要なルール
+  function-url-quotes: never
+  # styleのvalueのあらゆるcaseも許容
+  value-keyword-case:
+    - "lower"
+    - {
+        ignoreKeywords: [/.*/],
+        ignoreProperties: [/.*/],
+        ignoreFunctions: [/.*/],
+      }
+  alpha-value-notation: number
+  # selectorの重複を許容
+  no-duplicate-selectors: null
+
+ignoreFiles:
+  - src/assets/*.svg
+
